@@ -67,9 +67,6 @@ int main (int argc, char* argv[]){
 
   Fecha fecha; //El constructor
 
-  
-  
-
   texto_salida << "La fechas ordenadas son:" << std::endl; 
 
     while(std::getline(texto_entrada,lineas)){
@@ -80,14 +77,6 @@ int main (int argc, char* argv[]){
       
       fecha.Mostrar();
 
-      
-
-      
-
-      
-
-
-      
       /*vector_dia.push_back(anio);
       vector_dia.push_back(mes);
       vector_dia.push_back(dia);*/
@@ -96,3 +85,4 @@ int main (int argc, char* argv[]){
       texto_salida << dia << "/" << mes << "/" << anio << std::endl;
 
   }
+}

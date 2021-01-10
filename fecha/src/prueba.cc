@@ -8,6 +8,7 @@ class Human {
   bool operator<(const Human& other) const {
     return kindness_ < other.kindness_;
   }
+
  private:
   int kindness_ = 100;
 };
