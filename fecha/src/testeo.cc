@@ -6,70 +6,93 @@
 #include "fecha_funciones.cc"
 
 class Fecha {
- private:
-  int dia_;
-  int mes_;
-  int anio_;
  public:
-
-  void Mostrar(){
-    std::cout << dia_ << " " << mes_ << " " << anio_ << std::endl;
+  void Mostrar(){ 
+    std::cout << dia_ << "/" << mes_ << "/" << anio_ << std::endl;
   }
 
-  void EstablecerDia(int dia){ dia_ = dia;};
-  void EstablecerMes(int mes){ mes_ = mes;};
-  void EstablecerAnio(int anio){ anio_ = anio;};
+  void EstablecerFechas(int dia, int mes, int anio){
+     dia_ = dia;
+     mes_ = mes;
+     anio_ = anio;
+  } 
 
-};
+ /*bool comparar(const Fecha& fecha, const Fecha& fecha_2){
+     return (fecha.dia_ < fecha.dia_ && fecha.mes_ < fecha.mes_ && fecha.anio_ < fecha.anio_);
+  }*/
+
+  private:
+   int dia_;
+   int mes_;
+   int anio_;
+}; 
+  
+  
+bool comparar(int dia, int dia_){
+   return (dia < dia_);
+}
+bool comparar(int dia, int dia_, int mes, int mes_){
+   return (dia < dia_ && mes < mes_);
+}
+bool comparar(int dia, int dia_, int mes, int mes_, int anio, int anio_){
+   return (dia < dia_ && mes < mes_ && anio < anio_);
+}
+ 
+
 
 int main (int argc, char* argv[]){
   //Errores(argc,argv);
   std::ifstream texto_entrada {"fichero_entrada.txt"};
   std::ofstream texto_salida {"fichero_salida.txt"};
   std::string lineas;
+  int dia, mes, anio;
+  char barra;
+
   std::vector<int> vector_fechas;
-  
+      
+  std::cout << "Las fechas introducidas fueron:" << std::endl;
+
   Fecha fecha; //El constructor
 
-  while(std::getline(texto_entrada,lineas)){
-
-  std::string prueba = "01032002";
-  int calculo_fecha = stoi(lineas);
-  //std::cout << lineas << std::endl;
-  int anio = calculo_fecha % 10000;
-  int mes = (calculo_fecha / 10000) % 100;
-  int dia = calculo_fecha / 1000000;
-
-  fecha.EstablecerDia(dia);
-  fecha.EstablecerMes(mes);
-  fecha.EstablecerAnio(anio);
-  //fecha.Mostrar();
-
-  vector_fechas.push_back(calculo_fecha);
-  std::sort(vector_fechas.begin(), vector_fechas.end());
+  
   
   
 
+  texto_salida << "La fechas ordenadas son:" << std::endl; 
 
-    texto_salida << dia << "/" << mes << "/" << anio << std::endl;
+    while(std::getline(texto_entrada,lineas)){
+
+      texto_entrada >> dia >> barra >> mes >> barra >> anio;
+      
+      fecha.EstablecerFechas(dia,mes,anio);
+      
+      fecha.Mostrar();
+
+      vector_fechas.push_back(dia);
+      vector_fechas.push_back(mes);
+      vector_fechas.push_back(anio);
+
+      
 
 
+       for(size_t i = 0; i < vector_fechas.size(); i++){
+     std::sort (vector_fechas.begin(), vector_fechas.end());
+     std::cout << vector_fechas[i] << std::endl;
   }
 
-  for(size_t i = 0; i < vector_fechas.size(); i++){
-   
-    std::cout << vector_fechas[i] << std::endl;
-  }
+
+  
+      texto_salida << dia << "/" << mes << "/" << anio << std::endl;
+
+  } 
+
+
 
   
 
-
-
   
-
   
-}
 
  
 
-
+}

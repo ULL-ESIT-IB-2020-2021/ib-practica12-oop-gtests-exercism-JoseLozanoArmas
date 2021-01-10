@@ -18,7 +18,38 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <algorithm>
 #include "fecha_funciones.cc"
+
+class Fecha {
+ public:
+  void Mostrar(){ 
+    std::cout << dia_ << "/" << mes_ << "/" << anio_ << std::endl;
+  }
+
+  void EstablecerFechas(int dia, int mes, int anio){
+     dia_ = dia;
+     mes_ = mes;
+     anio_ = anio;
+  }
+
+  bool comparar(const Fecha &dia1){
+   if (dia1.anio_ < dia1.anio_)
+      return true;
+   if (dia1.anio_ == dia1.anio_ && dia1.mes_ < dia1.mes_)
+      return true;
+   if (dia1.anio_ == dia1.anio_ && dia1.mes_ == dia1.mes_ && dia1.dia_ < dia1.dia_)
+      return true;
+   return false;
+  }
+ 
+  private:
+   int dia_;
+   int mes_;
+   int anio_;
+
+}; 
+  
 
 
 
@@ -27,18 +58,41 @@ int main (int argc, char* argv[]){
   std::ifstream texto_entrada {"fichero_entrada.txt"};
   std::ofstream texto_salida {"fichero_salida.txt"};
   std::string lineas;
+  int dia, mes, anio;
+  char barra;
 
-  while ((std::getline(texto_entrada,lineas))) {
-    std::cout << lineas << std::endl;
+  std::vector<Fecha> vector_fechas;
+      
+  std::cout << "Las fechas introducidas fueron:" << std::endl;
+
+  Fecha fecha; //El constructor
+
+  
+  
+
+  texto_salida << "La fechas ordenadas son:" << std::endl; 
+
+    while(std::getline(texto_entrada,lineas)){
+
+      texto_entrada >> dia >> barra >> mes >> barra >> anio;
+      
+      fecha.EstablecerFechas(dia,mes,anio);
+      
+      fecha.Mostrar();
+
+      
+
+      
+
+      
 
 
-
-
-    texto_salida << lineas << std::endl;
+      
+      /*vector_dia.push_back(anio);
+      vector_dia.push_back(mes);
+      vector_dia.push_back(dia);*/
+      
+  
+      texto_salida << dia << "/" << mes << "/" << anio << std::endl;
 
   }
-
- 
-
-
-}
