@@ -18,3 +18,39 @@
     exit(EXIT_SUCCESS);
   }
 }
+
+bool CondicionBisiesto(int numero_evaluar){   ///comenzamos evaluando si el año es bisiesto o no
+  if ((numero_evaluar % 4 == 0) && (numero_evaluar % 100 != 0) || (numero_evaluar % 400 == 0)) {
+    return "Es bisiesto";
+  } else { 
+    return "No es bisiesto";
+  }
+}
+void FechasOrdenadas1(std::vector<int>vector_fechas, std::string fichero_salida){
+  std::vector<int> ordenar_datos;
+  int dia = 0, mes = 0, anio = 0, resultado = 0;
+      for (int i = 0; i < vector_fechas.size() - 2;){
+         dia = vector_fechas[i+0];
+         mes = vector_fechas[i+1];
+         anio = vector_fechas[i+3];
+         resultado = ((anio*10000)+(mes*100)+dia);
+         vector_fechas.emplace_back(resultado);
+         i = i + 3;
+      }
+      std::sort(ordenar_datos.begin(), ordenar_datos.end());
+
+      int dia1 = 0;
+      int mes1 = 0;
+      int anyo1 = 0;
+
+      std::ofstream texto_resultado (fichero_salida);
+      for(int i = 0; i < ordenar_datos.size(); i++){
+         int intercambio = ordenar_datos[i];
+         anyo1 = (intercambio/10000);
+         mes1 = ((intercambio%10000)/100);
+         dia1 = ((intercambio%10000)%100);
+         texto_resultado << dia1 << "/" << mes1 << "/" << anyo1 << std::endl;
+      }
+      texto_resultado.close();
+    }
+

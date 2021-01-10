@@ -26,63 +26,63 @@ class Fecha {
   void Mostrar(){ 
     std::cout << dia_ << "/" << mes_ << "/" << anio_ << std::endl;
   }
-
   void EstablecerFechas(int dia, int mes, int anio){
      dia_ = dia;
      mes_ = mes;
      anio_ = anio;
-  }
-
-  bool comparar(const Fecha &dia1){
-   if (dia1.anio_ < dia1.anio_)
-      return true;
-   if (dia1.anio_ == dia1.anio_ && dia1.mes_ < dia1.mes_)
-      return true;
-   if (dia1.anio_ == dia1.anio_ && dia1.mes_ == dia1.mes_ && dia1.dia_ < dia1.dia_)
-      return true;
-   return false;
-  }
- 
+  } 
   private:
    int dia_;
    int mes_;
    int anio_;
-
-}; 
-  
-
-
+};  
 
 int main (int argc, char* argv[]){
   //Errores(argc,argv);
   std::ifstream texto_entrada {"fichero_entrada.txt"};
-  std::ofstream texto_salida {"fichero_salida.txt"};
+  std::ofstream texto_salida;
   std::string lineas;
-  int dia, mes, anio;
+  std::string fichero_salida;
+  int dia, mes, anio, resultado;
   char barra;
+  std::vector<int> vector_fechas;
 
-  std::vector<Fecha> vector_fechas;
-      
+  
+  std::cout << "Dime un nombre para el fichero de salida" << std::endl;
+  std::cin >> fichero_salida;
   std::cout << "Las fechas introducidas fueron:" << std::endl;
+  //texto_salida << "La fechas ordenadas son:" << std::endl; 
 
-  Fecha fecha; //El constructor
-
-  texto_salida << "La fechas ordenadas son:" << std::endl; 
+  Fecha fecha; ///El constructor
 
     while(std::getline(texto_entrada,lineas)){
 
       texto_entrada >> dia >> barra >> mes >> barra >> anio;
-      
       fecha.EstablecerFechas(dia,mes,anio);
-      
       fecha.Mostrar();
 
-      /*vector_dia.push_back(anio);
-      vector_dia.push_back(mes);
-      vector_dia.push_back(dia);*/
+      vector_fechas.push_back(dia);
+      vector_fechas.push_back(mes);
+      vector_fechas.push_back(anio);
+
       
   
-      texto_salida << dia << "/" << mes << "/" << anio << std::endl;
+    }
+      for(size_t i = 0; vector_fechas.size(); i++){
+       std::cout << vector_fechas[i] << std::endl;
+    }
+    
 
-  }
+    FechasOrdenadas1(vector_fechas, fichero_salida);
+     
+
+ 
+  
+  
+
+  
+  
+
+ 
+
 }
