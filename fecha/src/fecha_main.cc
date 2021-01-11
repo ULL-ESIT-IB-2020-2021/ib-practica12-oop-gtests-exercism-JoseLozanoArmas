@@ -50,9 +50,7 @@ int main (int argc, char* argv[]){
   
   std::cout << "Dime un nombre para el fichero de salida" << std::endl;
   std::cin >> fichero_salida;
-  std::cout << "Las fechas introducidas fueron:" << std::endl;
-  //texto_salida << "La fechas ordenadas son:" << std::endl; 
-
+  
   Fecha fecha; ///El constructor
 
     while(std::getline(texto_entrada,lineas)){
@@ -68,17 +66,14 @@ int main (int argc, char* argv[]){
       
   
     }
-      for(size_t i = 0; vector_fechas.size(); i++){
-       std::cout << vector_fechas[i] << std::endl;
-    }
-    
+     
 
     FechasOrdenadas1(vector_fechas, fichero_salida);
      
 
  
   
-  
+   
 
   
   
