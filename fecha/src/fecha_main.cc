@@ -28,7 +28,7 @@ class Fecha {
   }
   void EstablecerFechas(int dia, int mes, int anio){
      dia_ = dia;
-     mes_ = mes;
+     mes_ = mes; 
      anio_ = anio;
   } 
   private:
@@ -39,8 +39,8 @@ class Fecha {
 
 int main (int argc, char* argv[]){
   //Errores(argc,argv);
-  std::ifstream texto_entrada {"fichero_entrada.txt"};
-  std::ofstream texto_salida;
+  std::ifstream texto_entrada (argv[1]);
+  std::ofstream texto_salida (argv[2]);
   std::string lineas;
   std::string fichero_salida;
   int dia, mes, anio, resultado;
