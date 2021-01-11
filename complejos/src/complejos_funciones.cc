@@ -37,7 +37,7 @@ class Complejo {
     std::cout << "Resultado suma = " << c_parte_real_ << " + " << c_parte_imaginaria_ << "i" << std::endl;
   }
   }
-
+ 
   Complejo Resta(Complejo complejo_1, Complejo complejo_2){
   Complejo resultado;
   int resultado_real = complejo_1.c_parte_real_ - complejo_2.c_parte_real_;
@@ -55,6 +55,14 @@ class Complejo {
   }
   }
 
+  ///ESTE MÉTODO ES DE LA MODIFICACIÓN  
+  Complejo Resta(Complejo complejo_1,int real){
+  Complejo resultado;
+  int resultado_real = complejo_1.c_parte_real_ - real;
+  int resultado_imaginario = complejo_1.c_parte_imaginaria_ - 0;
+  resultado = {resultado_real, resultado_imaginario};
+  return resultado;
+  }
 
   
 };

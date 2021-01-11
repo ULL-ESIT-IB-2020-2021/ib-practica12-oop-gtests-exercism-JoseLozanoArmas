@@ -27,5 +27,5 @@ int main (int argc, char* argv[]){
 
   resultado = resultado.Resta(complejo_1, complejo_2);
   resultado.MostrarResta();
-    
+     
 }
