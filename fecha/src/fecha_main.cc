@@ -21,24 +21,10 @@
 #include <algorithm>
 #include "fecha_funciones.cc"
 
-class Fecha {
- public:
-  void Mostrar(){ 
-    std::cout << dia_ << "/" << mes_ << "/" << anio_ << std::endl;
-  }
-  void EstablecerFechas(int dia, int mes, int anio){
-     dia_ = dia;
-     mes_ = mes; 
-     anio_ = anio;
-  } 
-  private:
-   int dia_;
-   int mes_;
-   int anio_;
-};  
+ 
 
 int main (int argc, char* argv[]){
-  //Errores(argc,argv);
+  Errores(argc,argv);
   std::ifstream texto_entrada (argv[1]);
   std::ofstream texto_salida (argv[2]);
   std::string lineas;
@@ -50,7 +36,7 @@ int main (int argc, char* argv[]){
   
   std::cout << "Dime un nombre para el fichero de salida" << std::endl;
   std::cin >> fichero_salida;
-  
+
   Fecha fecha; ///El constructor
 
     while(std::getline(texto_entrada,lineas)){
@@ -62,9 +48,7 @@ int main (int argc, char* argv[]){
       vector_fechas.push_back(dia);
       vector_fechas.push_back(mes);
       vector_fechas.push_back(anio);
-
       
-  
     }
      
 

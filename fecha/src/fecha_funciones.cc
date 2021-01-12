@@ -1,6 +1,23 @@
 #include <iostream>
 #include "fecha.h"
 
+
+class Fecha {
+ public:
+  void Mostrar(){ 
+    std::cout << dia_ << "/" << mes_ << "/" << anio_ << std::endl;
+  }
+  void EstablecerFechas(int dia, int mes, int anio){
+     dia_ = dia;
+     mes_ = mes; 
+     anio_ = anio;
+  } 
+  private:
+   int dia_;
+   int mes_;
+   int anio_;
+};  
+
  void Errores(int argc, char *argv[]) {
   if (argc != 3) {
     std::cout << argv[0] << "- Gestión de fechas" << std::endl;
@@ -26,6 +43,8 @@ bool CondicionBisiesto(int numero_evaluar){   ///comenzamos evaluando si el año
     return "No es bisiesto";
   }
 }
+
+
 void FechasOrdenadas1(std::vector<int>vector_fechas, std::string fichero_salida){
   std::vector<int> ordenar_datos;
   int dia = 0, mes = 0, anio = 0, resultado = 0;
